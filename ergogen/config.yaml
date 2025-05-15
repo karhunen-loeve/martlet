@@ -1,0 +1,43 @@
+meta:
+  engine: 4.1.0
+  name: martlet
+  author: Thomas Stephan
+
+units:
+  kx: cx
+  ky: cy
+  px: kx + 2
+  py: ky + 2
+  $default_width: cx
+  $default_height: cy
+
+points:
+  key:
+    witdh: 2kx
+    padding: py
+    spread: px
+
+  zones.matrix:                                                                         
+    rows:
+      bottom:
+      home:
+      top:                            
+    columns:
+      outer:
+        rows:
+          top.skip: true
+      pinky:
+      ring:
+      middle:
+      index:        
+      inner:
+  zones.thumb: 
+    key.splay: -5
+    anchor:
+      ref: matrix_index_bottom
+      shift: [0,-cx]
+    columns:
+      left:
+      middle:
+      right:
+    
