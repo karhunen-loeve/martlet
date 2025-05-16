@@ -4,18 +4,21 @@ meta:
   author: Thomas Stephan
 
 units:
-  kx: cx
-  ky: cy
-  px: cx + 2
-  py: cy + 2
+  # default ui settings
   $default_width: cx
   $default_height: cy
+   
+  # Proxy Spacing Variables
+  kx: cx
+  ky: cy
+  # Padding Variables
+  px: kx + 2
+  py: ky + 2
 
 points:
   key:
-    padding: py
-    spread: px
-
+    padding: 1ky
+    spread: 1kx
   zones.matrix:                                                                         
     rows:
       bottom:
@@ -25,7 +28,7 @@ points:
       outer:
         rows.bottom.skip: true
       pinky: 
-        key.stagger: 0.5 cy
+        key.stagger: 0.5 ky
       ring:
         key.stagger: 7
       middle:
@@ -36,23 +39,30 @@ points:
           #splay: -5
       inner:
         key:
-          stagger: -3
+          stagger: 2
           #splay: -10
 
   zones.thumb: 
     key:
-      spread: px + 3  
+      spread: kx + 4  
     anchor:
       ref: matrix_middle_bottom
-      shift: [0.5 cx,-cy - 12]
+      shift: [0.5 kx,-ky - 10]
     columns:
       left:
       middle:
         key:
-          splay: -12
+          splay: -15
           stagger: -3
       right:
         key:
-          splay: -15
-          stagger: -5
-    
+          splay: -16
+          stagger: 2
+          spread: kx + 4.5
+          width: 1.5 kx
+          rotate: 90
+
+  rotate: -28
+  mirror: &mirror
+    ref: matrix_inner_top
+    distance: 2 kx
