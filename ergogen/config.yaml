@@ -6,14 +6,13 @@ meta:
 units:
   kx: cx
   ky: cy
-  px: kx + 2
-  py: ky + 2
+  px: cx + 2
+  py: cy + 2
   $default_width: cx
   $default_height: cy
 
 points:
   key:
-    witdh: 2kx
     padding: py
     spread: px
 
@@ -24,20 +23,36 @@ points:
       top:                            
     columns:
       outer:
-        rows:
-          top.skip: true
-      pinky:
+        rows.bottom.skip: true
+      pinky: 
+        key.stagger: 0.5 cy
       ring:
+        key.stagger: 7
       middle:
-      index:        
+        key.stagger: 2
+      index:
+        key:
+          stagger: -6
+          #splay: -5
       inner:
+        key:
+          stagger: -3
+          #splay: -10
+
   zones.thumb: 
-    key.splay: -5
+    key:
+      spread: px + 3  
     anchor:
-      ref: matrix_index_bottom
-      shift: [0,-cx]
+      ref: matrix_middle_bottom
+      shift: [0.5 cx,-cy - 12]
     columns:
       left:
       middle:
+        key:
+          splay: -12
+          stagger: -3
       right:
+        key:
+          splay: -15
+          stagger: -5
     
