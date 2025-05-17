@@ -12,8 +12,8 @@ units:
   kx: cx
   ky: cy
   # Padding Variables
-  px: kx + 2
-  py: ky + 2
+  px: kx + 4
+  py: ky + 4
 
 points:
   key:
@@ -66,3 +66,70 @@ points:
   mirror: &mirror
     ref: matrix_inner_top
     distance: 2 kx
+
+outlines:
+  raw:
+    - what: rectangle
+      where: true
+      size: [px, py]
+  keys:
+    - what: rectangle
+      where: true
+      size: [kx-0.5,ky-0.5]
+  board:
+    - what: polygon
+      operation: stack
+      points:
+        - ref: thumb_right
+          shift: [px, -py/2]
+        - ref: thumb_right
+          shift: [-px/2, -py/2]
+        - ref: thumb_middle
+          shift: [px/2, -py/2]
+        - ref: thumb_left
+          shift: [-px/2, -py/2]
+        - ref: matrix_pinky_bottom
+          shift: [px,-py/2]
+        - ref: matrix_pinky_bottom
+          shift: [-px/2,-py/2]
+        - ref: matrix_outer_home
+          shift: [-px/2,-py/2]
+        - ref: matrix_outer_top
+          shift: [-px/2, py/2]
+        - ref: matrix_middle_top 
+          shift: [-1.5kx, py/2]
+        - ref: matrix_middle_top
+          shift: [ px/2, py/2]
+        - ref: matrix_inner_top
+          shift: [-px/2 - kx/3, py/2]
+        - ref: matrix_inner_top
+          shift: [ 0,py/2]
+        - ref: mirror_matrix_inner_top
+          shift: [ 0,py/2]
+        - ref: mirror_matrix_inner_top
+          shift: [-px/2 - kx/3, py/2]
+        - ref: mirror_matrix_middle_top
+          shift: [ px/2 ,py/2]
+        - ref: mirror_matrix_middle_top 
+          shift: [-1.5kx, py/2]
+        - ref: mirror_matrix_outer_top
+          shift: [-px/2, py/2]
+        - ref: mirror_matrix_outer_home
+          shift: [-px/2,-py/2]
+        - ref: mirror_matrix_pinky_bottom
+          shift: [-px/2,-py/2]
+        - ref: mirror_matrix_pinky_bottom
+          shift: [px,-py/2]
+        - ref: mirror_thumb_left
+          shift: [-px/2, -py/2]
+        - ref: mirror_thumb_middle
+          shift: [px/2, -py/2]
+        - ref: mirror_thumb_right
+          shift: [-px/2, -py/2]
+        - ref: mirror_thumb_right
+          shift: [px, -py/2]
+      fillet: 2
+  combo:
+    - name: board
+    - operation: subtract
+      name: keys
