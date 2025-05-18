@@ -6,9 +6,9 @@ The Martlet is intended to be a minimalist keyboard that I plan to use primarily
 # Key Features
 
 - Wireless
-- 2 x 42 Keys
-- More staggered pinky colmn
 - Similar to corne layout
+- 42 Keys (Maybe only 40 Keys)
+- More staggered pinky colmn
 - No RGB lights
 - No Frills
 
