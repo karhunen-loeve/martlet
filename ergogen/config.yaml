@@ -12,8 +12,12 @@ units:
   kx: cx
   ky: cy
   # Padding Variables
-  px: kx + 4
-  py: ky + 4
+  p: 2
+  px: kx + 2p
+  py: ky + 2p
+  # pcb holes for the choc
+  hx: 14
+  hy: 14
 
 points:
   key:
@@ -76,6 +80,10 @@ outlines:
     - what: rectangle
       where: true
       size: [kx-0.5,ky-0.5]
+  holes:
+    - what: rectangle
+      where: true
+      size: [hx, hy]
   board:
     - what: polygon
       operation: stack
@@ -83,9 +91,9 @@ outlines:
         - ref: thumb_right
           shift: [px, -py/2]
         - ref: thumb_right
-          shift: [-px/2, -py/2]
-        - ref: thumb_middle
-          shift: [px/2, -py/2]
+          shift: [-0.75kx - 2, -ky/2 - 2]
+        - ref: thumb_right
+          shift: [-0.75kx - 2, ky/2]
         - ref: thumb_left
           shift: [-px/2, -py/2]
         - ref: matrix_pinky_bottom
@@ -96,6 +104,14 @@ outlines:
           shift: [-px/2,-py/2]
         - ref: matrix_outer_top
           shift: [-px/2, py/2]
+        - ref: matrix_outer_top
+          shift: [ kx/2 - p, py/2]
+        - ref: matrix_pinky_top
+          shift: [ -px/2, py/2]
+        - ref: matrix_pinky_top
+          shift: [ kx/2 - p, py/2]
+        - ref: matrix_middle_top 
+          shift: [-1.5kx -p, py/2]
         - ref: matrix_middle_top 
           shift: [-1.5kx, py/2]
         - ref: matrix_middle_top
@@ -112,6 +128,14 @@ outlines:
           shift: [ px/2 ,py/2]
         - ref: mirror_matrix_middle_top 
           shift: [-1.5kx, py/2]
+        - ref: mirror_matrix_middle_top 
+          shift: [-1.5kx -p, py/2]
+        - ref: mirror_matrix_pinky_top
+          shift: [ kx/2 - p, py/2]
+        - ref: mirror_matrix_pinky_top
+          shift: [ -px/2, py/2]
+        - ref: mirror_matrix_outer_top
+          shift: [ kx/2 - p, py/2]
         - ref: mirror_matrix_outer_top
           shift: [-px/2, py/2]
         - ref: mirror_matrix_outer_home
@@ -122,10 +146,10 @@ outlines:
           shift: [px,-py/2]
         - ref: mirror_thumb_left
           shift: [-px/2, -py/2]
-        - ref: mirror_thumb_middle
-          shift: [px/2, -py/2]
         - ref: mirror_thumb_right
-          shift: [-px/2, -py/2]
+          shift: [-0.75kx - 2, ky/2]
+        - ref: mirror_thumb_right
+          shift: [-0.75kx - 2, -ky/2 - 2]
         - ref: mirror_thumb_right
           shift: [px, -py/2]
       fillet: 2
