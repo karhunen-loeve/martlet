@@ -12,7 +12,7 @@ units:
   kx: cx
   ky: cy
   # Padding Variables
-  p: 2
+  p: 1
   px: kx + 2p
   py: ky + 2p
   # pcb holes for the choc
@@ -110,26 +110,31 @@ outlines:
           shift: [ -px/2, py/2]
         - ref: matrix_pinky_top
           shift: [ kx/2 - p, py/2]
-        - ref: matrix_middle_top 
-          shift: [-1.5kx -p, py/2]
-        - ref: matrix_middle_top 
-          shift: [-1.5kx, py/2]
+        - ref: matrix_ring_top 
+          shift: [-px/2, py/2]
+        - ref: matrix_ring_top 
+          shift: [ kx/2 - p, py/2]
         - ref: matrix_middle_top
-          shift: [ px/2, py/2]
+          shift: [ -px/2, ky/2 + 1.1p]
+        - ref: matrix_middle_top
+          shift: [ px/2, ky/2 + 1.1p]
         - ref: matrix_inner_top
           shift: [-px/2 - kx/3, py/2]
         - ref: matrix_inner_top
           shift: [ 0,py/2]
+          
         - ref: mirror_matrix_inner_top
           shift: [ 0,py/2]
         - ref: mirror_matrix_inner_top
           shift: [-px/2 - kx/3, py/2]
         - ref: mirror_matrix_middle_top
-          shift: [ px/2 ,py/2]
-        - ref: mirror_matrix_middle_top 
-          shift: [-1.5kx, py/2]
-        - ref: mirror_matrix_middle_top 
-          shift: [-1.5kx -p, py/2]
+          shift: [ px/2, ky/2 + 1.1p]
+        - ref: mirror_matrix_middle_top
+          shift: [-px/2 , ky/2 + 1.1p]
+        - ref: mirror_matrix_ring_top 
+          shift: [kx/2 - p, py/2]
+        - ref: mirror_matrix_ring_top 
+          shift: [-px/2, py/2]
         - ref: mirror_matrix_pinky_top
           shift: [ kx/2 - p, py/2]
         - ref: mirror_matrix_pinky_top
@@ -152,7 +157,7 @@ outlines:
           shift: [-0.75kx - 2, -ky/2 - 2]
         - ref: mirror_thumb_right
           shift: [px, -py/2]
-      fillet: 2
+      fillet: 1
   combo:
     - name: board
     - operation: subtract
