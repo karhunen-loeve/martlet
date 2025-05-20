@@ -52,10 +52,10 @@ points:
         key.column_net: P6
       index:
         key.stagger: -6
-        key.column_net: P07
+        key.column_net: P7
       inner:
         key.stagger: 2
-        key.column_net: P08
+        key.column_net: P8
 
   zones.thumb: 
     key:
