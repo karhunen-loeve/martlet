@@ -23,28 +23,39 @@ points:
   key:
     padding: 1ky
     spread: 1kx
-  zones.matrix:                                                                         
+  zones.matrix:   
+    # Fix placement on KiCAD sheet.
+    anchor:
+      shift: [100, -100]                                                                      
     rows:
       bottom:
+        row_net: P19
+        mirror.row_net: P4
       home:
-      top:                            
+        row_net: P20
+        mirror.row_net: P0
+      top:
+        row_net: P21
+        mirror.row_net: P1            
     columns:
       outer:
         rows.bottom.skip: true
+        key.column_net: P15
       pinky: 
         key.stagger: 0.5 ky
+        key.column_net: P14
       ring:
         key.stagger: 7
+        key.column_net: P16
       middle:
         key.stagger: 2
+        key.column_net: P6
       index:
-        key:
-          stagger: -6
-          #splay: -5
+        key.stagger: -6
+        key.column_net: P07
       inner:
-        key:
-          stagger: 2
-          #splay: -10
+        key.stagger: 2
+        key.column_net: P08
 
   zones.thumb: 
     key:
@@ -54,10 +65,12 @@ points:
       shift: [0.5 kx,-ky - 10]
     columns:
       left:
+        key.column_net: P6
       middle:
         key:
           splay: -15
           stagger: -3
+          column_net: P7
       right:
         key:
           splay: -16
@@ -65,6 +78,11 @@ points:
           spread: kx + 4.5
           width: 1.5 kx
           rotate: 90
+          column_net: P8
+    rows:
+      cluster:
+        row_net: P18
+        mirror.row_net: P5
 
   rotate: -28
   mirror: &mirror
@@ -88,13 +106,13 @@ outlines:
     - what: polygon
       operation: stack
       points:
-        - ref: thumb_right
-          shift: [px, -py/2]
-        - ref: thumb_right
-          shift: [-0.75kx - 2, -ky/2 - 2]
-        - ref: thumb_right
-          shift: [-0.75kx - 2, ky/2]
-        - ref: thumb_left
+        - ref: thumb_right_cluster
+          shift: [kx, -py/2]
+        - ref: thumb_right_cluster
+          shift: [-0.75kx - p, -ky/2 - p]
+        - ref: thumb_right_cluster
+          shift: [-0.75kx - p, ky/2]
+        - ref: thumb_left_cluster
           shift: [-px/2, -py/2]
         - ref: matrix_pinky_bottom
           shift: [px,-py/2]
@@ -122,7 +140,7 @@ outlines:
           shift: [-px/2 - kx/3, py/2]
         - ref: matrix_inner_top
           shift: [ 0,py/2]
-          
+
         - ref: mirror_matrix_inner_top
           shift: [ 0,py/2]
         - ref: mirror_matrix_inner_top
@@ -149,16 +167,48 @@ outlines:
           shift: [-px/2,-py/2]
         - ref: mirror_matrix_pinky_bottom
           shift: [px,-py/2]
-        - ref: mirror_thumb_left
+        - ref: mirror_thumb_left_cluster
           shift: [-px/2, -py/2]
-        - ref: mirror_thumb_right
-          shift: [-0.75kx - 2, ky/2]
-        - ref: mirror_thumb_right
-          shift: [-0.75kx - 2, -ky/2 - 2]
-        - ref: mirror_thumb_right
-          shift: [px, -py/2]
+        - ref: mirror_thumb_right_cluster
+          shift: [-0.75kx - p, ky/2]
+        - ref: mirror_thumb_right_cluster
+          shift: [-0.75kx - p, -ky/2 - p]
+        - ref: mirror_thumb_right_cluster
+          shift: [kx, -py/2]
       fillet: 1
   combo:
     - name: board
     - operation: subtract
       name: keys
+
+pcbs:
+  martletChoc:
+    outlines:
+      main:
+        outline: board
+    footprints:
+      choc_hotswap:
+        what: choc
+        where: true
+        params:
+          keycaps: true
+          reverse: false
+          hotswap: true
+          from: "{{column_net}}"
+          to: "{{colrow}}"
+      diode:
+        what: diode
+        where: true
+        params:
+          from: "{{colrow}}"
+          to: "{{row_net}}"
+        adjust:
+          shift: [0, -5]
+      promicro:
+        what: promicro
+        params:
+          orientation: "down"
+        where: 
+          ref.aggregate.parts: [matrix_inner_bottom,mirror_matrix_inner_bottom]
+          shift: [0,0]
+          rotate: -90
