@@ -26,7 +26,7 @@ points:
   zones.matrix:   
     # Fix placement on KiCAD sheet.
     anchor:
-      shift: [100, -100]                                                                      
+      shift: [65, -50]                                                                      
     rows:
       bottom:
         row_net: P19
@@ -140,7 +140,6 @@ outlines:
           shift: [-px/2 - kx/3, py/2]
         - ref: matrix_inner_top
           shift: [ 0,py/2]
-
         - ref: mirror_matrix_inner_top
           shift: [ 0,py/2]
         - ref: mirror_matrix_inner_top
@@ -212,3 +211,30 @@ pcbs:
           ref.aggregate.parts: [matrix_inner_bottom,mirror_matrix_inner_bottom]
           shift: [0,0]
           rotate: -90
+      slider:
+        what: slider
+        params:
+          from: pos
+          to: RAW
+        where:
+          ref.aggregate.parts: [thumb_right_cluster, mirror_thumb_right_cluster]
+          shift: [0,3.5]
+          rotate: 180
+      reset: 
+        what: button
+        params:
+          from: GND
+          to: RST
+        where:
+          ref.aggregate.parts: [matrix_inner_bottom, mirror_matrix_inner_bottom]
+          shift: [-9,-22]
+          rotate: -90
+      jstph:
+        what: jstph
+        params:
+          pos: pos
+          neg: GND
+        where: 
+          ref.aggregate.parts: [matrix_inner_bottom, mirror_matrix_inner_bottom]
+          shift: [0, -20]
+          
