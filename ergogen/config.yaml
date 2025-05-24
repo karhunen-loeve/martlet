@@ -29,33 +29,33 @@ points:
       shift: [65, -50]                                                                      
     rows:
       bottom:
-        row_net: P19
-        mirror.row_net: P4
+        row_net: P19 # row 2 -> P15
+        mirror.row_net: P4 # row 6 -> P7
       home:
-        row_net: P20
-        mirror.row_net: P0
+        row_net: P19 # row 1 -> P19
+        mirror.row_net: P4 # row 5 -> P4
       top:
-        row_net: P21
-        mirror.row_net: P1            
+        row_net: P20 # row 0 -> P20
+        mirror.row_net: P0 # row row 4 -> P0
     columns:
       outer:
         rows.bottom.skip: true
-        key.column_net: P15
+        key.column_net: P5 # col 0 -> P5
       pinky: 
         key.stagger: 0.5 ky
-        key.column_net: P14
+        key.column_net: P6 # col 1 -> P6
       ring:
         key.stagger: 7
-        key.column_net: P16
+        key.column_net: P18 # col 2 -> P18
       middle:
         key.stagger: 2
-        key.column_net: P6
+        key.column_net: P14 # col 3 -> P14
       index:
         key.stagger: -6
-        key.column_net: P7
+        key.column_net: P8 # col 4 -> P8
       inner:
         key.stagger: 2
-        key.column_net: P8
+        key.column_net: P16 # col 5 -> P16
 
   zones.thumb: 
     key:
@@ -65,12 +65,12 @@ points:
       shift: [0.5 kx,-ky - 10]
     columns:
       left:
-        key.column_net: P6
+        key.column_net: P14 # col 3 -> P14
       middle:
         key:
           splay: -15
           stagger: -3
-          column_net: P7
+          column_net: P8 # col 4 -> P8
       right:
         key:
           splay: -16
@@ -78,11 +78,11 @@ points:
           spread: kx + 4.5
           width: 1.5 kx
           rotate: 90
-          column_net: P8
+          column_net: P16 # col 5 -> 16
     rows:
       cluster:
-        row_net: P18
-        mirror.row_net: P5
+        row_net: P10 # row 3 -> P10
+        mirror.row_net: P9 # row 7 -> P9
 
   rotate: -28
   mirror: &mirror
