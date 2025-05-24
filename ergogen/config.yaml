@@ -30,7 +30,7 @@ points:
     rows:
       bottom:
         row_net: P19 # row 2 -> P15
-        mirror.row_net: P4 # row 6 -> P7
+        mirror.row_net: P7 # row 6 -> P7
       home:
         row_net: P19 # row 1 -> P19
         mirror.row_net: P4 # row 5 -> P4
