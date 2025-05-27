@@ -1,6 +1,7 @@
 meta:
   engine: 4.1.0
   name: martlet
+  title: The Martlet
   author: Thomas Stephan
 
 units:
@@ -29,7 +30,7 @@ points:
       shift: [65, -50]                                                                      
     rows:
       bottom:
-        row_net: P19 # row 2 -> P15
+        row_net: P15 # row 2 -> P15
         mirror.row_net: P7 # row 6 -> P7
       home:
         row_net: P19 # row 1 -> P19
